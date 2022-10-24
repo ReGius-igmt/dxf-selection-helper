@@ -8,9 +8,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import lombok.Setter;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,7 +49,14 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
-
+        DirectoryChooser chooser = new DirectoryChooser();
+        if(!resultFolderField.getText().isEmpty()) {
+            File initialDirectory = new File(resultFolderField.getText());
+            if(initialDirectory.exists() && initialDirectory.isDirectory())
+                chooser.setInitialDirectory(initialDirectory);
+        }
+        File resultFolder = chooser.showDialog(stage);
+        if(resultFolder != null) resultFolderField.setText(resultFolder.getAbsolutePath());
     }
 
     @FXML
