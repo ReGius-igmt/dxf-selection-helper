@@ -1,5 +1,6 @@
 package ru.regiuss.dxf.selection.helper.controller;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,7 +79,13 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("initialize");
+        specificationFileField.textProperty().addListener(onSpecificationChange());
+    }
+
+    private ChangeListener<? super String> onSpecificationChange() {
+        return (observableValue, s, t1) -> {
+
+        };
     }
 
     private void browseFolder(TextField field) {
