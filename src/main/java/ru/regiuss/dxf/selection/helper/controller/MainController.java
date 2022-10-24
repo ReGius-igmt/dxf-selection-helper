@@ -8,6 +8,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +42,8 @@ public class MainController implements Initializable {
 
     @FXML
     private ListView<String> templateListView;
+    @Setter
+    private Stage stage;
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
@@ -63,6 +67,6 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        System.out.println("initialize");
     }
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ru.regiuss.dxf.selection.helper.controller.MainController;
 
 import java.util.prefs.Preferences;
 
@@ -33,6 +34,8 @@ public class App extends Application {
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
         Parent parent = loader.load();
+        MainController controller = loader.getController();
+        controller.setStage(stage);
         stage.setScene(new Scene(parent));
         stage.show();
     }
