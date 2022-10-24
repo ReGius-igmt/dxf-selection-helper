@@ -9,6 +9,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.Setter;
 
@@ -59,7 +60,15 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseSpecificationFile(ActionEvent event) {
-
+        FileChooser chooser = new FileChooser();
+        if(!specificationFileField.getText().isEmpty()) {
+            File initialDirectory = new File(specificationFileField.getText());
+            if(initialDirectory.exists())
+                chooser.setInitialDirectory(initialDirectory.isFile() ? initialDirectory.getParentFile() : initialDirectory);
+        }
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("EXCEL", "*.xls", "*.xlsx"));
+        File specificationFile = chooser.showOpenDialog(stage);
+        if(specificationFile != null) specificationFileField.setText(specificationFile.getAbsolutePath());
     }
 
     @FXML
