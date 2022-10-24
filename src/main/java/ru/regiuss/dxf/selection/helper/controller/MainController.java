@@ -49,19 +49,12 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
-        DirectoryChooser chooser = new DirectoryChooser();
-        if(!resultFolderField.getText().isEmpty()) {
-            File initialDirectory = new File(resultFolderField.getText());
-            if(initialDirectory.exists() && initialDirectory.isDirectory())
-                chooser.setInitialDirectory(initialDirectory);
-        }
-        File resultFolder = chooser.showDialog(stage);
-        if(resultFolder != null) resultFolderField.setText(resultFolder.getAbsolutePath());
+        browseFolder(resultFolderField);
     }
 
     @FXML
     void onBrowseSourceFolder(ActionEvent event) {
-
+        browseFolder(sourceFolderField);
     }
 
     @FXML
@@ -77,5 +70,16 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("initialize");
+    }
+
+    private void browseFolder(TextField field) {
+        DirectoryChooser chooser = new DirectoryChooser();
+        if(!field.getText().isEmpty()) {
+            File initialDirectory = new File(field.getText());
+            if(initialDirectory.exists() && initialDirectory.isDirectory())
+                chooser.setInitialDirectory(initialDirectory);
+        }
+        File resultFolder = chooser.showDialog(stage);
+        if(resultFolder != null) field.setText(resultFolder.getAbsolutePath());
     }
 }
