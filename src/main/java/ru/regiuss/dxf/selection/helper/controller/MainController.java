@@ -10,18 +10,16 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
 import lombok.Setter;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
+import ru.regiuss.dxf.selection.helper.task.StartTask;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -81,7 +79,19 @@ public class MainController implements Initializable {
 
     @FXML
     void onStart(ActionEvent event) {
-
+        StartTask startTask = new StartTask(
+                new HashSet<String>(opListView.getSelectionModel().getSelectedItems()),
+                new HashSet<String>(templateListView.getSelectionModel().getSelectedItems()),
+                new HashSet<String>(sizeListView.getSelectionModel().getSelectedItems()),
+                new File(specificationFileField.getText()),
+                Paths.get(sourceFolderField.getText()),
+                Paths.get(resultFolderField.getText()),
+                clearResultFolderCheckBox.isSelected()
+        );
+        progressBar.progressProperty().bind(startTask.progressProperty());
+        statusText.textProperty().bind(startTask.messageProperty());
+        ((Button)event.getTarget()).setText("Стоп");
+        app.getEs().execute(startTask);
     }
 
     @Override
