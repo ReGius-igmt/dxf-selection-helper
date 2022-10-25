@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
+@Log4j2
 public class MainController implements Initializable {
 
     @FXML
@@ -77,8 +79,9 @@ public class MainController implements Initializable {
             if(initialDirectory.exists())
                 chooser.setInitialDirectory(initialDirectory.isFile() ? initialDirectory.getParentFile() : initialDirectory);
         }
-        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("EXCEL", "*.xls", "*.xlsx"));
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("EXCEL", "*.xls"));
         File specificationFile = chooser.showOpenDialog(app.getStage());
+        log.debug("select specification file - {}", specificationFile);
         if(specificationFile != null) specificationFileField.setText(specificationFile.getAbsolutePath());
     }
 
@@ -122,6 +125,7 @@ public class MainController implements Initializable {
             statusClear(target);
         });
         startTask.setOnFailed(workerStateEvent -> {
+            log.error("start task error", startTask.getException());
             Alert alert = new Alert(Alert.AlertType.ERROR, startTask.getException().getMessage());
             alert.setTitle("Ошибка");
             alert.setHeaderText("Программа завершила работу с ошибкой");
@@ -173,6 +177,7 @@ public class MainController implements Initializable {
                 listViewsBox.setDisable(false);
             });
             readTask.setOnFailed(workerStateEvent -> {
+                log.error("specification read task error", readTask.getException());
                 Alert alert = new Alert(Alert.AlertType.ERROR, readTask.getException().getMessage());
                 alert.setTitle("Ошибка");
                 alert.setHeaderText("Сбой при чтении файла спецификации " + f.getAbsolutePath());
@@ -191,6 +196,7 @@ public class MainController implements Initializable {
                 chooser.setInitialDirectory(initialDirectory);
         }
         File resultFolder = chooser.showDialog(app.getStage());
+        log.debug("browse folder - {}", resultFolder);
         if(resultFolder != null) field.setText(resultFolder.getAbsolutePath());
     }
 }

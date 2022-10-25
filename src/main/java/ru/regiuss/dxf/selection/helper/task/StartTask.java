@@ -42,10 +42,9 @@ public class StartTask extends Task<Void> {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
-                log.info(row.get(1) + ".dxf");
                 if(check(template, row.get(3)) || check(size, row.get(4)) || check(op, row.get(5))) continue;
                 Path filePath = source.resolve(row.get(1) + ".dxf");
-                log.info(filePath);
+                log.info("copy file {}", filePath);
                 if(filePath.toFile().exists())
                     Files.copy(filePath, result.resolve(row.get(1) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
             }
@@ -54,6 +53,7 @@ public class StartTask extends Task<Void> {
     }
 
     private boolean check(Set<String> set, String value) {
+        log.debug(value);
         return value == null || value.isEmpty() || !set.contains(value);
     }
 
@@ -67,6 +67,7 @@ public class StartTask extends Task<Void> {
                 if(Thread.currentThread().isInterrupted()) break;
                 updateMessage(String.format("Удаление (%s/%s)", ++c, files.length));
                 updateProgress(++c, files.length);
+                log.debug("delete file {}", f);
                 f.delete();
             }
         } else resultFile.mkdirs();

@@ -21,7 +21,8 @@ public class SpecificationStorage {
     private Set<String> template;
     private Set<String> size;
 
-    public void read() {
+
+    public void read() throws Exception {
         try(Reader reader = ReaderFactory.create(source)) {
             op = new HashSet<>(reader.length());
             template = new HashSet<>(reader.length());
@@ -34,8 +35,9 @@ public class SpecificationStorage {
                 add(size, row.get(4));
                 add(op, row.get(5));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            log.debug("SET TEMPLATE: {}", template);
+            log.debug("SET SIZE: {}", size);
+            log.debug("SET OP: {}", op);
         }
     }
 
