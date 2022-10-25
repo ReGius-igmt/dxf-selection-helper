@@ -1,7 +1,707 @@
-[01:19:03] [JavaFX Application Thread/INFO]: [App] running version: 0.0.1
-[01:19:03] [JavaFX Application Thread/INFO]: [App] check updates: false
-[01:19:03] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
-[01:19:03] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
-[01:19:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
-[01:19:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
-[01:19:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[01:20:16] [JavaFX Application Thread/INFO]: [App] running version: 0.0.1
+[01:20:16] [JavaFX Application Thread/INFO]: [App] check updates: false
+[01:20:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[01:20:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[01:20:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[01:20:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[01:20:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Заготовка
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Пруток
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 159х5  ГОСТ 8732-78
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:19] [DXFSelectionHelperThread/DEBUG]: [StartTask] 89х5  ГОСТ 8732-78
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Заготовка
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Пруток
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 159х5  ГОСТ 8732-78
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:25] [DXFSelectionHelperThread/DEBUG]: [StartTask] 89х5  ГОСТ 8732-78
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Заготовка
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080817-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080817-03.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080911-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080901.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080903.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 0,8
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081203.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 1
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22050601-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 1
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080211-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 1,5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081013.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 1,5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081017.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042103-12.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042103-13.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042103-14.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042109-12.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042109-13.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042109-14.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042205.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042509-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042805.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042807.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042807-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042841.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042843.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080513-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080513-03.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080517-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080801-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080913.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080913-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081011.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081015.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 3
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22083001-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042107.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042107-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042107-03.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042515-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042801-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042801-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042803.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042803-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042803-04.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080315-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 4
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лазер
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042801.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042111.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080311-02.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080311-03.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080317.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080319.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042839-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080321-01.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080409.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080411.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080413.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080415.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080417.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080501.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080503.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080505-03.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080505-04.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080505-05.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080507.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080511.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080515.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22080811.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Лист
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 5
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22081201.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Пруток
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 10
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Плазма
+[01:20:48] [DXFSelectionHelperThread/INFO]: [StartTask] copy file C:\projects\Java\dxf-selection-helper\tests\Раскрой\22042809.dxf
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 159х5  ГОСТ 8732-78
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 57х4  ГОСТ 8732-78
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] check =============
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] Труба
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 89х5  ГОСТ 8732-78
+[01:20:48] [DXFSelectionHelperThread/DEBUG]: [StartTask] 
