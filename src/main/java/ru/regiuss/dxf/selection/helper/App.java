@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.Getter;
 import ru.regiuss.dxf.selection.helper.controller.MainController;
@@ -31,6 +32,7 @@ public class App extends Application {
             return t;
         });
 
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
         stage.setTitle("DXFSelectionHelper");
         stage.setMinWidth(WIDTH);
         stage.setMinHeight(HEIGHT);

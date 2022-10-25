@@ -42,6 +42,7 @@ public class StartTask extends Task<Void> {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
+                log.debug("check =============");
                 if(check(template, row.get(3)) || check(size, row.get(4)) || check(op, row.get(5))) continue;
                 Path filePath = source.resolve(row.get(1) + ".dxf");
                 log.info("copy file {}", filePath);
