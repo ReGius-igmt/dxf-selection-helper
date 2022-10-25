@@ -17,6 +17,7 @@ import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -85,13 +86,25 @@ public class MainController implements Initializable {
     void onStart(ActionEvent event) {
         Button target = (Button) event.getTarget();
         if(startTask != null) {
-            target.setText("Старт");
-            target.getStyleClass().remove("danger");
             startTask.cancel(true);
-            startTask = null;
-            statusClear();
+            statusClear(target);
             return;
         }
+        try {
+            for(Field field : getClass().getDeclaredFields()) {
+                if(field.isAnnotationPresent(FXML.class) && field.getType().isAssignableFrom(TextField.class)) {
+                    if(((TextField)field.get(this)).getText().isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Ошибка");
+                        alert.setHeaderText("Заполните все поля");
+                        alert.show();
+                        return;
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+        target.setText("Стоп");
+        target.getStyleClass().add("danger");
         startTask = new StartTask(
                 new HashSet<>(opListView.getSelectionModel().getSelectedItems()),
                 new HashSet<>(templateListView.getSelectionModel().getSelectedItems()),
@@ -106,21 +119,24 @@ public class MainController implements Initializable {
             alert.setTitle("Оповещение");
             alert.setHeaderText("Успех");
             alert.show();
-            statusClear();
+            statusClear(target);
         });
         startTask.setOnFailed(workerStateEvent -> {
             Alert alert = new Alert(Alert.AlertType.ERROR, startTask.getException().getMessage());
             alert.setTitle("Ошибка");
             alert.setHeaderText("Программа завершила работу с ошибкой");
             alert.show();
-            statusClear();
+            statusClear(target);
         });
         progressBar.progressProperty().bind(startTask.progressProperty());
         statusText.textProperty().bind(startTask.messageProperty());
         app.getEs().execute(startTask);
     }
 
-    private void statusClear() {
+    private void statusClear(Button button) {
+        button.setText("Старт");
+        button.getStyleClass().remove("danger");
+        startTask = null;
         progressBar.progressProperty().unbind();
         statusText.textProperty().unbind();
         progressBar.setProgress(0);
@@ -154,6 +170,13 @@ public class MainController implements Initializable {
                 opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
                 templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
                 sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
+                listViewsBox.setDisable(false);
+            });
+            readTask.setOnFailed(workerStateEvent -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR, readTask.getException().getMessage());
+                alert.setTitle("Ошибка");
+                alert.setHeaderText("Сбой при чтении файла спецификации " + f.getAbsolutePath());
+                alert.show();
                 listViewsBox.setDisable(false);
             });
             app.getEs().execute(readTask);

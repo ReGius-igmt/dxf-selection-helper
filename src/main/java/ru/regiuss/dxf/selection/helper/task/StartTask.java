@@ -33,8 +33,8 @@ public class StartTask extends Task<Void> {
 
         if(clearResultFolder) clearFolder(result);
 
-        if(!specification.exists()) throw new FileNotFoundException(specification + " not exist");
-        if(!specification.isFile()) throw new RuntimeException(specification + " is not file");
+        if(!specification.exists()) throw new FileNotFoundException("файл " + specification + " не существует");
+        if(!specification.isFile()) throw new RuntimeException(specification + " не является файлом");
         try(Reader reader = ReaderFactory.create(specification)) {
             Row row;
             int c = 0;
