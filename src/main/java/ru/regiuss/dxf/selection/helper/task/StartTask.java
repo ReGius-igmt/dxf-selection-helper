@@ -48,9 +48,10 @@ public class StartTask extends Task<Void> {
                         || check(settings.getOp(), row.get(5))
                 ) continue;
                 Path filePath = source.resolve(row.get(1) + ".dxf");
-                log.info("copy file {}", filePath);
-                if(filePath.toFile().exists())
+                if(filePath.toFile().exists()) {
+                    log.debug("copy file {}", filePath);
                     Files.copy(filePath, result.resolve(row.get(1) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
+                } else log.debug("file not exists {}", filePath);
             }
         }
         return null;
