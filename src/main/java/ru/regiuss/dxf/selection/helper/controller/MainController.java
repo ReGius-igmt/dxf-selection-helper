@@ -89,9 +89,10 @@ public class MainController implements Initializable {
             target.getStyleClass().remove("danger");
             startTask.cancel(true);
             startTask = null;
+            statusClear();
             return;
         }
-        StartTask startTask = new StartTask(
+        startTask = new StartTask(
                 new HashSet<>(opListView.getSelectionModel().getSelectedItems()),
                 new HashSet<>(templateListView.getSelectionModel().getSelectedItems()),
                 new HashSet<>(sizeListView.getSelectionModel().getSelectedItems()),
@@ -100,9 +101,30 @@ public class MainController implements Initializable {
                 Paths.get(resultFolderField.getText()),
                 clearResultFolderCheckBox.isSelected()
         );
+        startTask.setOnSucceeded(workerStateEvent -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Программа успешно завершила работу");
+            alert.setTitle("Оповещение");
+            alert.setHeaderText("Успех");
+            alert.show();
+            statusClear();
+        });
+        startTask.setOnFailed(workerStateEvent -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR, startTask.getException().getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Программа завершила работу с ошибкой");
+            alert.show();
+            statusClear();
+        });
         progressBar.progressProperty().bind(startTask.progressProperty());
         statusText.textProperty().bind(startTask.messageProperty());
         app.getEs().execute(startTask);
+    }
+
+    private void statusClear() {
+        progressBar.progressProperty().unbind();
+        statusText.textProperty().unbind();
+        progressBar.setProgress(0);
+        statusText.setText("Статус");
     }
 
     @Override
