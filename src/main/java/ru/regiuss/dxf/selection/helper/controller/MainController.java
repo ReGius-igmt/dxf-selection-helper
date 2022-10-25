@@ -12,9 +12,14 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 import lombok.Setter;
+import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -84,7 +89,9 @@ public class MainController implements Initializable {
 
     private ChangeListener<? super String> onSpecificationChange() {
         return (observableValue, s, t1) -> {
-
+            if(t1 == null || t1.isEmpty()) return;
+            File f = new File(t1);
+            if(f.exists() && f.isFile()) new SpecificationStorage(f).read();
         };
     }
 

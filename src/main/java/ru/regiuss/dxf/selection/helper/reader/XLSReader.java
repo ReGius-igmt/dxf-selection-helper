@@ -1,40 +1,41 @@
 package ru.regiuss.dxf.selection.helper.reader;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
 
 public class XLSReader implements Reader {
 
     private final Workbook workbook;
-    private final Iterator<org.apache.poi.ss.usermodel.Row> iterator;
     private final Sheet sheet;
+    private final int length;
+    private int current;
 
-    public XLSReader(File file) throws IOException {
-        this.workbook = new HSSFWorkbook(new FileInputStream(file));
-        this.sheet = workbook.getSheetAt(0);
-        this.iterator = sheet.rowIterator();
+    public XLSReader(File file) throws IOException, BiffException {
+        this.workbook = Workbook.getWorkbook(file);
+        this.sheet = workbook.getSheet(0);
+        this.current = 0;
+        length = sheet.getRows();
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        return current < length;
     }
 
     @Override
     public Row next() {
-        final org.apache.poi.ss.usermodel.Row row = iterator.next();
-        return i -> row.getCell(i).getStringCellValue();
+        final Cell[] row = sheet.getRow(current++);
+        return i -> row[i].getContents();
     }
 
     @Override
     public int length() {
-        return sheet.getPhysicalNumberOfRows();
+        return length;
     }
 
     @Override
