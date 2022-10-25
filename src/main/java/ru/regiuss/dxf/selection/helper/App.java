@@ -7,19 +7,24 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.controller.MainController;
 
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.prefs.Preferences;
 
 @Getter
+@Log4j2
 public class App extends Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
 
     private Stage stage;
+    private boolean checkUpdate;
+    private String version;
     private ExecutorService es;
 
     @Override
@@ -31,6 +36,13 @@ public class App extends Application {
             t.setName("DXFSelectionHelperThread");
             return t;
         });
+
+        Properties pomProperties = new Properties();
+        pomProperties.load(getClass().getResourceAsStream("/pom.properties"));
+        version = pomProperties.getProperty("app.version");
+        log.info("running version: {}", version);
+        checkUpdate = !getParameters().getRaw().contains("-update");
+        log.info("check updates: {}", checkUpdate);
 
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
         stage.setTitle("DXFSelectionHelper");
