@@ -1,10 +1,15 @@
-[00:19:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
-[00:19:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
-[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
-[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
-[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
-[00:19:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kopia_Kotel_2LC-22.xls
-[00:19:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
-[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
-[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
-[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[00:57:03] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[00:57:03] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[00:57:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[00:57:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[00:57:03] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[00:57:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kopia_Kotel_2LC-22.xls
+[00:57:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[00:57:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[00:57:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[00:57:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[00:57:17] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[00:57:17] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[00:57:17] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[00:57:17] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[00:57:17] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]

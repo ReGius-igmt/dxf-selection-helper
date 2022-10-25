@@ -3,6 +3,7 @@ package ru.regiuss.dxf.selection.helper.task;
 import javafx.concurrent.Task;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import ru.regiuss.dxf.selection.helper.model.Settings;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
 import ru.regiuss.dxf.selection.helper.reader.Row;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Set;
 
@@ -18,24 +20,21 @@ import java.util.Set;
 @Log4j2
 public class StartTask extends Task<Void> {
 
-    private Set<String> op;
-    private Set<String> template;
-    private Set<String> size;
-    private File specification;
-    private Path source;
-    private Path result;
-    private boolean clearResultFolder;
+    private final Settings settings;
 
     @Override
     protected Void call() throws Exception {
         updateMessage("Запуск...");
         updateProgress(0, 1);
 
-        if(clearResultFolder) clearFolder(result);
+        Path result = Paths.get(settings.getResult());
+        if(settings.isClearResultFolder()) clearFolder(result);
 
+        File specification = new File(settings.getSpecification());
         if(!specification.exists()) throw new FileNotFoundException("файл " + specification + " не существует");
         if(!specification.isFile()) throw new RuntimeException(specification + " не является файлом");
         try(Reader reader = ReaderFactory.create(specification)) {
+            Path source = Paths.get(settings.getSource());
             Row row;
             int c = 0;
             while (reader.hasNext() && !Thread.currentThread().isInterrupted()) {
@@ -43,7 +42,11 @@ public class StartTask extends Task<Void> {
                 updateProgress(c, reader.length());
                 row = reader.next();
                 log.debug("check =============");
-                if(check(template, row.get(3)) || check(size, row.get(4)) || check(op, row.get(5))) continue;
+                if(
+                        check(settings.getTemplate(), row.get(3))
+                        || check(settings.getSize(), row.get(4))
+                        || check(settings.getOp(), row.get(5))
+                ) continue;
                 Path filePath = source.resolve(row.get(1) + ".dxf");
                 log.info("copy file {}", filePath);
                 if(filePath.toFile().exists())

@@ -2,6 +2,7 @@ package ru.regiuss.dxf.selection.helper.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,19 +15,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
+import ru.regiuss.dxf.selection.helper.model.Settings;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 
-import java.io.File;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 @Log4j2
 public class MainController implements Initializable {
@@ -63,7 +64,6 @@ public class MainController implements Initializable {
 
     @FXML
     private ListView<String> templateListView;
-    @Setter
     private App app;
     private StartTask startTask;
 
@@ -114,15 +114,11 @@ public class MainController implements Initializable {
         } catch (Exception ignored) {}
         target.setText("Стоп");
         target.getStyleClass().add("danger");
-        startTask = new StartTask(
-                new HashSet<>(opListView.getSelectionModel().getSelectedItems()),
-                new HashSet<>(templateListView.getSelectionModel().getSelectedItems()),
-                new HashSet<>(sizeListView.getSelectionModel().getSelectedItems()),
-                new File(specificationFileField.getText()),
-                Paths.get(sourceFolderField.getText()),
-                Paths.get(resultFolderField.getText()),
-                clearResultFolderCheckBox.isSelected()
-        );
+
+        Settings settings = getSettings();
+        saveSettings(settings);
+
+        startTask = new StartTask(settings);
         startTask.setOnSucceeded(workerStateEvent -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Программа успешно завершила работу");
             alert.setTitle("Оповещение");
@@ -143,6 +139,18 @@ public class MainController implements Initializable {
         app.getEs().execute(startTask);
     }
 
+    private Settings getSettings() {
+        Settings settings = new Settings();
+        settings.setOp(new HashSet<>(opListView.getSelectionModel().getSelectedItems()));
+        settings.setTemplate(new HashSet<>(templateListView.getSelectionModel().getSelectedItems()));
+        settings.setSize(new HashSet<>(sizeListView.getSelectionModel().getSelectedItems()));
+        settings.setSpecification(specificationFileField.getText());
+        settings.setSource(sourceFolderField.getText());
+        settings.setResult(resultFolderField.getText());
+        settings.setClearResultFolder(clearResultFolderCheckBox.isSelected());
+        return settings;
+    }
+
     private void statusClear(Button button) {
         button.setText("Старт");
         button.getStyleClass().remove("danger");
@@ -158,7 +166,6 @@ public class MainController implements Initializable {
         opListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         templateListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         sizeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        specificationFileField.textProperty().addListener(onSpecificationChange());
         pane.setOnDragOver(event -> {
             if (event.getGestureSource() != pane
                     && event.getDragboard().hasFiles()) {
@@ -182,37 +189,51 @@ public class MainController implements Initializable {
         });
     }
 
+    public void init(App app) {
+        this.app = app;
+        loadSettings();
+        specificationFileField.textProperty().addListener(onSpecificationChange());
+    }
+
     private ChangeListener<? super String> onSpecificationChange() {
         return (observableValue, s, t1) -> {
             if(t1 == null || t1.isEmpty()) return;
             if(t1.indexOf('.', t1.length() - 5) < 0) return;
             File f = new File(t1);
-            if(!f.exists() && f.isDirectory()) return;
-            listViewsBox.setDisable(true);
-            SpecificationStorage storage = new SpecificationStorage(f);
-            Task<Void> readTask = new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    storage.read();
-                    return null;
-                }
-            };
-            readTask.setOnSucceeded(event -> {
-                opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
-                templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
-                sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
-                listViewsBox.setDisable(false);
-            });
-            readTask.setOnFailed(workerStateEvent -> {
-                log.error("specification read task error", readTask.getException());
-                Alert alert = new Alert(Alert.AlertType.ERROR, readTask.getException().getMessage());
-                alert.setTitle("Ошибка");
-                alert.setHeaderText("Сбой при чтении файла спецификации");
-                alert.show();
-                listViewsBox.setDisable(false);
-            });
-            app.getEs().execute(readTask);
+            loadListViews(f, null);
         };
+    }
+
+    private void loadListViews(File f, Runnable onSuccess) {
+        if(!f.exists() && f.isDirectory()) return;
+        listViewsBox.setDisable(true);
+        SpecificationStorage storage = new SpecificationStorage(f);
+        Task<Void> readTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                storage.read();
+                return null;
+            }
+        };
+        readTask.setOnSucceeded(event -> {
+            opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
+            opListView.getSelectionModel().clearSelection();
+            templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
+            templateListView.getSelectionModel().clearSelection();
+            sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
+            sizeListView.getSelectionModel().clearSelection();
+            listViewsBox.setDisable(false);
+            if(onSuccess != null) onSuccess.run();
+        });
+        readTask.setOnFailed(workerStateEvent -> {
+            log.error("specification read task error", readTask.getException());
+            Alert alert = new Alert(Alert.AlertType.ERROR, readTask.getException().getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Сбой при чтении файла спецификации");
+            alert.show();
+            listViewsBox.setDisable(false);
+        });
+        app.getEs().execute(readTask);
     }
 
     private void browseFolder(TextField field) {
@@ -225,5 +246,40 @@ public class MainController implements Initializable {
         File resultFolder = chooser.showDialog(app.getStage());
         log.debug("browse folder - {}", resultFolder);
         if(resultFolder != null) field.setText(resultFolder.getAbsolutePath());
+    }
+
+    private void saveSettings(Settings settings) {
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("cache"))) {
+            os.writeObject(settings);
+        } catch (Exception e) {
+            log.error("save settings exception", e);
+        }
+    }
+
+    private void loadSettings() {
+        File cacheFile = new File("cache");
+        if(!cacheFile.exists() || !cacheFile.isFile()) return;
+        try(ObjectInputStream is = new ObjectInputStream(new FileInputStream("cache"))) {
+            Settings settings = (Settings) is.readObject();
+            specificationFileField.setText(settings.getSpecification());
+            sourceFolderField.setText(settings.getSource());
+            resultFolderField.setText(settings.getResult());
+            clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
+            loadListViews(new File(settings.getSpecification()), () -> {
+                listViewSelect(opListView, settings.getOp());
+                listViewSelect(templateListView, settings.getTemplate());
+                listViewSelect(sizeListView, settings.getSize());
+            });
+        } catch (Exception e) {
+            log.error("load settings exception", e);
+        }
+    }
+
+    private <T> void listViewSelect(ListView<T> list, Set<T> values) {
+        MultipleSelectionModel<T> sm = list.getSelectionModel();
+        ObservableList<T> items = list.getItems();
+        for (int i = 0; i < items.size(); i++) {
+            if(values.contains(items.get(i))) sm.select(i);
+        }
     }
 }

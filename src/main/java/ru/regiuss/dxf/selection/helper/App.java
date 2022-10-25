@@ -52,7 +52,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
         Parent parent = loader.load();
         MainController controller = loader.getController();
-        controller.setApp(this);
+        controller.init(this);
         stage.setScene(new Scene(parent));
         stage.show();
     }
