@@ -38,7 +38,7 @@ public class StartTask extends Task<Void> {
         try(Reader reader = ReaderFactory.create(specification)) {
             Row row;
             int c = 0;
-            while (reader.hasNext()) {
+            while (reader.hasNext() && !Thread.currentThread().isInterrupted()) {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
@@ -64,6 +64,7 @@ public class StartTask extends Task<Void> {
             if(files == null) return;
             int c = 0;
             for(File f : files) {
+                if(Thread.currentThread().isInterrupted()) break;
                 updateMessage(String.format("Удаление (%s/%s)", ++c, files.length));
                 updateProgress(++c, files.length);
                 f.delete();
