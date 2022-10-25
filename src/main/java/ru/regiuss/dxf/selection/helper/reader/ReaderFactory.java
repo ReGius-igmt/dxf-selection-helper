@@ -16,6 +16,6 @@ public class ReaderFactory {
         switch (extension) {
             case "xls": return new XLSReader(file);
         }
-        throw new IllegalArgumentException("extension [" + extension + "] not have reader");
+        throw new IllegalArgumentException(file.getAbsolutePath() + " extension [" + extension + "] not have reader");
     }
 }

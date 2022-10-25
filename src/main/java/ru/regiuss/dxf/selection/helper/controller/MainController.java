@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -27,6 +30,9 @@ import java.util.ResourceBundle;
 
 @Log4j2
 public class MainController implements Initializable {
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private CheckBox clearResultFolderCheckBox;
@@ -153,6 +159,24 @@ public class MainController implements Initializable {
         templateListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         sizeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         specificationFileField.textProperty().addListener(onSpecificationChange());
+        pane.setOnDragOver(event -> {
+            if (event.getGestureSource() != pane
+                    && event.getDragboard().hasFiles()) {
+                event.acceptTransferModes(TransferMode.LINK);
+            }
+            event.consume();
+        });
+        pane.setOnDragDropped(dragEvent -> {
+            Dragboard db = dragEvent.getDragboard();
+            dragEvent.setDropCompleted(false);
+            if(db.hasFiles()) {
+                File file = db.getFiles().get(0);
+                if(file.isFile()) specificationFileField.setText(file.getAbsolutePath());
+                else sourceFolderField.setText(file.getAbsolutePath());
+                dragEvent.setDropCompleted(true);
+            }
+            dragEvent.consume();
+        });
     }
 
     private ChangeListener<? super String> onSpecificationChange() {
@@ -180,7 +204,7 @@ public class MainController implements Initializable {
                 log.error("specification read task error", readTask.getException());
                 Alert alert = new Alert(Alert.AlertType.ERROR, readTask.getException().getMessage());
                 alert.setTitle("Ошибка");
-                alert.setHeaderText("Сбой при чтении файла спецификации " + f.getAbsolutePath());
+                alert.setHeaderText("Сбой при чтении файла спецификации");
                 alert.show();
                 listViewsBox.setDisable(false);
             });
