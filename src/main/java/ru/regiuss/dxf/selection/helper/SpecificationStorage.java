@@ -27,17 +27,19 @@ public class SpecificationStorage {
             template = new HashSet<>(reader.length());
             size = new HashSet<>(reader.length());
             Row row;
+            if(reader.hasNext()) reader.next();
             while (reader.hasNext()) {
                 row = reader.next();
-                template.add(row.get(3));
-                size.add(row.get(4));
-                op.add(row.get(5));
+                add(template, row.get(3));
+                add(size, row.get(4));
+                add(op, row.get(5));
             }
-            log.info(op);
-            log.info(template);
-            log.info(size);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void add(Set<String> set, String value) {
+        if(value != null && !value.isEmpty()) set.add(value);
     }
 }

@@ -1,13 +1,12 @@
 package ru.regiuss.dxf.selection.helper.controller;
 
 import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -16,12 +15,15 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import lombok.Setter;
+import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MainController implements Initializable {
 
@@ -52,7 +54,7 @@ public class MainController implements Initializable {
     @FXML
     private ListView<String> templateListView;
     @Setter
-    private Stage stage;
+    private App app;
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
@@ -73,7 +75,7 @@ public class MainController implements Initializable {
                 chooser.setInitialDirectory(initialDirectory.isFile() ? initialDirectory.getParentFile() : initialDirectory);
         }
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("EXCEL", "*.xls", "*.xlsx"));
-        File specificationFile = chooser.showOpenDialog(stage);
+        File specificationFile = chooser.showOpenDialog(app.getStage());
         if(specificationFile != null) specificationFileField.setText(specificationFile.getAbsolutePath());
     }
 
@@ -84,6 +86,9 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        opListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        templateListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        sizeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         specificationFileField.textProperty().addListener(onSpecificationChange());
     }
 
@@ -91,7 +96,22 @@ public class MainController implements Initializable {
         return (observableValue, s, t1) -> {
             if(t1 == null || t1.isEmpty()) return;
             File f = new File(t1);
-            if(f.exists() && f.isFile()) new SpecificationStorage(f).read();
+            if(f.exists() && f.isFile()) {
+                SpecificationStorage storage = new SpecificationStorage(f);
+                Task<Void> readTask = new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        storage.read();
+                        return null;
+                    }
+                };
+                readTask.setOnSucceeded(event -> {
+                    opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
+                    templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
+                    sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
+                });
+                app.getEs().execute(readTask);
+            }
         };
     }
 
@@ -102,7 +122,7 @@ public class MainController implements Initializable {
             if(initialDirectory.exists() && initialDirectory.isDirectory())
                 chooser.setInitialDirectory(initialDirectory);
         }
-        File resultFolder = chooser.showDialog(stage);
+        File resultFolder = chooser.showDialog(app.getStage());
         if(resultFolder != null) field.setText(resultFolder.getAbsolutePath());
     }
 }

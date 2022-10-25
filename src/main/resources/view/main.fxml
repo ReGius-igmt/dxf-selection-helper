@@ -13,12 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.regiuss.dxf.selection.helper.controller.MainController">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <VBox maxWidth="500.0">
+            <VBox maxWidth="700.0">
                <children>
                   <Label text="Папка Раскрой:">
                      <font>
@@ -41,7 +40,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox maxWidth="500.0">
+            <VBox maxWidth="700.0">
                <children>
                   <Label text="Файл Спецификация:">
                      <font>
@@ -64,7 +63,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" maxWidth="500.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="700.0">
                <children>
                   <VBox alignment="CENTER">
                      <children>
@@ -73,7 +72,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="opListView" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="opListView" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER">
@@ -83,7 +82,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="templateListView" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="templateListView" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER">
@@ -93,12 +92,12 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="sizeListView" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="sizeListView" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <VBox maxWidth="500.0">
+            <VBox maxWidth="700.0">
                <children>
                   <Label text="Папка Результат:">
                      <font>
@@ -121,7 +120,7 @@
                   </HBox>
                </children>
             </VBox>
-            <CheckBox fx:id="clearResultFolderCheckBox" maxWidth="500.0" mnemonicParsing="false" text="Очистить папку Результат перед стартом">
+            <CheckBox fx:id="clearResultFolderCheckBox" maxWidth="700.0" mnemonicParsing="false" text="Очистить папку Результат перед стартом">
                <font>
                   <Font size="14.0" />
                </font>
