@@ -172,7 +172,10 @@ public class MainController implements Initializable {
             if(db.hasFiles()) {
                 File file = db.getFiles().get(0);
                 if(file.isFile()) specificationFileField.setText(file.getAbsolutePath());
-                else sourceFolderField.setText(file.getAbsolutePath());
+                else {
+                    if(dragEvent.getY() > pane.getHeight()/2) resultFolderField.setText(file.getAbsolutePath());
+                    else sourceFolderField.setText(file.getAbsolutePath());
+                }
                 dragEvent.setDropCompleted(true);
             }
             dragEvent.consume();

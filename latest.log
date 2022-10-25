@@ -1,18 +1,10 @@
-[00:12:49] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
-[00:12:49] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
-[00:12:50] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
-[00:12:50] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
-[00:12:50] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
-[00:13:08] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xlsx
-[00:13:08] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xlsx
-[00:13:09] [JavaFX Application Thread/ERROR]: [MainController] specification read task error
-java.lang.IllegalArgumentException: extension [xlsx] not have reader
-	at ru.regiuss.dxf.selection.helper.reader.ReaderFactory.create(ReaderFactory.java:19) ~[classes/:?]
-	at ru.regiuss.dxf.selection.helper.SpecificationStorage.read(SpecificationStorage.java:26) ~[classes/:?]
-	at ru.regiuss.dxf.selection.helper.controller.MainController$1.call(MainController.java:193) ~[classes/:?]
-	at ru.regiuss.dxf.selection.helper.controller.MainController$1.call(MainController.java:190) ~[classes/:?]
-	at javafx.concurrent.Task$TaskCallable.call(Task.java:1423) ~[jfxrt.jar:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_333]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_333]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_333]
-	at java.lang.Thread.run(Thread.java:750) ~[?:1.8.0_333]
+[00:19:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kotel_2LC-22.xls
+[00:19:14] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[00:19:14] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
+[00:19:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] create reader by C:\projects\Java\dxf-selection-helper\tests\Kopia_Kotel_2LC-22.xls
+[00:19:16] [DXFSelectionHelperThread/DEBUG]: [ReaderFactory] extension xls
+[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET TEMPLATE: [Лист, Труба, Пруток]
+[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET SIZE: [89х5  ГОСТ 8732-78, 10, 1, 3, 4, 5, 0,8, 1-1/2", 33,5х3,2  ГОСТ 3262-75, 48х3,5  ГОСТ 3262-75, 57х4  ГОСТ 8732-78, 159х5  ГОСТ 8732-78, 1,5]
+[00:19:16] [DXFSelectionHelperThread/DEBUG]: [SpecificationStorage] SET OP: [Лазер, Плазма]
