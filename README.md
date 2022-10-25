@@ -4,5 +4,5 @@ minimal java version: 8
 build java version: 8
 ## About
 Use for copy files matching the criteria
-##Preview
+## Preview
 ![preview](preview.png)
