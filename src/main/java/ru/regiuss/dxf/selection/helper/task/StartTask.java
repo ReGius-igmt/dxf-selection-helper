@@ -3,12 +3,12 @@ package ru.regiuss.dxf.selection.helper.task;
 import javafx.concurrent.Task;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import ru.regiuss.dxf.selection.helper.exception.ColumnIndexException;
 import ru.regiuss.dxf.selection.helper.model.Settings;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
 import ru.regiuss.dxf.selection.helper.reader.Row;
+import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +16,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Log4j2
@@ -45,20 +47,11 @@ public class StartTask extends Task<TaskResult> {
             Row row;
             int c = 0;
 
-            int[] indexes = new int[] {-1, -1, -1, -1, -1};
-
+            int[] indexes;
             if(reader.hasNext()) {
-                List<String> values = Arrays.asList("обозначение", "заготовка", "типоразмер", "оп1", "к-во");
-                row = reader.next();
-                for (int i = 0; i < row.size(); i++) {
-                    String v = row.get(i).toLowerCase(Locale.ROOT);
-                    int index = values.indexOf(v);
-                    if(index != -1) indexes[index] = i;
-                }
-                for (int i = 0; i < indexes.length; i++) {
-                    if(indexes[i] < 0) throw new ColumnIndexException(values.get(i));
-                }
+                indexes = Utils.readIndexes(reader.next());
             } else return new TaskResult();
+
             while (reader.hasNext() && !isCancelled()) {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
