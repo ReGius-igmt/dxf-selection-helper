@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.exception.ColumnIndexException;
 import ru.regiuss.dxf.selection.helper.model.Settings;
+import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
 import ru.regiuss.dxf.selection.helper.reader.Row;
@@ -15,19 +16,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 @AllArgsConstructor
 @Log4j2
-public class StartTask extends Task<Void> {
+public class StartTask extends Task<TaskResult> {
 
     private final Settings settings;
 
     @Override
-    protected Void call() throws Exception {
+    protected TaskResult call() throws Exception {
         updateMessage("Запуск...");
         updateProgress(0, 1);
 
@@ -37,6 +35,11 @@ public class StartTask extends Task<Void> {
         File specification = new File(settings.getSpecification());
         if(!specification.exists()) throw new FileNotFoundException("файл " + specification + " не существует");
         if(!specification.isFile()) throw new RuntimeException(specification + " не является файлом");
+
+        int found = 0;
+        int copied = 0;
+        List<String> notFoundFiles = new LinkedList<>();
+
         try(Reader reader = ReaderFactory.create(specification)) {
             Path source = Paths.get(settings.getSource());
             Row row;
@@ -55,30 +58,33 @@ public class StartTask extends Task<Void> {
                 for (int i = 0; i < indexes.length; i++) {
                     if(indexes[i] < 0) throw new ColumnIndexException(values.get(i));
                 }
-            } else return null;
-
+            } else return new TaskResult();
             while (reader.hasNext() && !isCancelled()) {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
-                log.debug("check =============");
                 if(
                         check(settings.getTemplate(), row.get(indexes[1]))
                         || check(settings.getSize(), row.get(indexes[2]))
                         || check(settings.getOp(), row.get(indexes[3]))
                 ) continue;
+                found++;
                 Path filePath = source.resolve(row.get(indexes[0]) + ".dxf");
+
                 if(filePath.toFile().exists()) {
                     log.debug("copy file {}", filePath);
                     Files.copy(filePath, result.resolve(row.get(indexes[0]) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
-                } else log.debug("file not exists {}", filePath);
+                    copied++;
+                } else {
+                    notFoundFiles.add(filePath.getFileName().toString());
+                    log.debug("file not exists {}", filePath);
+                }
             }
         }
-        return null;
+        return new TaskResult(found, copied, notFoundFiles);
     }
 
     private boolean check(Set<String> set, String value) {
-        log.debug(value);
         return value == null || value.isEmpty() || !set.contains(value);
     }
 
@@ -92,7 +98,6 @@ public class StartTask extends Task<Void> {
                 if(Thread.currentThread().isInterrupted()) break;
                 updateMessage(String.format("Удаление (%s/%s)", ++c, files.length));
                 updateProgress(++c, files.length);
-                log.debug("delete file {}", f);
                 f.delete();
             }
         } else resultFile.mkdirs();

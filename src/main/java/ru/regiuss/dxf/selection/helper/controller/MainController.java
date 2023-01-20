@@ -6,7 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
@@ -15,10 +19,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.Settings;
+import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 
 import java.io.*;
@@ -120,10 +127,21 @@ public class MainController implements Initializable {
 
         startTask = new StartTask(settings);
         startTask.setOnSucceeded(workerStateEvent -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Программа успешно завершила работу");
-            alert.setTitle("Оповещение");
-            alert.setHeaderText("Успех");
-            alert.show();
+            TaskResult result = startTask.getValue();
+            Stage stage = new Stage();
+            stage.setTitle("Success");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/success.fxml"));
+            try {
+                Parent p = loader.load();
+                SuccessController controller = loader.getController();
+                controller.init(result);
+                stage.setScene(new Scene(p));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+                stage.showAndWait();
+            } catch (Exception e) {
+                log.error("load success fxml", e);
+            }
             statusClear(target);
         });
         startTask.setOnFailed(workerStateEvent -> {
