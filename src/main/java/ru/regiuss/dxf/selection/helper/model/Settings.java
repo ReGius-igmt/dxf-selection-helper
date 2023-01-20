@@ -17,4 +17,5 @@ public class Settings implements Serializable {
     private HashSet<String> template;
     private HashSet<String> size;
     private boolean clearResultFolder;
+    private boolean checkCount;
 }

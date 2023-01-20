@@ -46,6 +46,9 @@ public class MainController implements Initializable {
     private CheckBox clearResultFolderCheckBox;
 
     @FXML
+    private CheckBox checkCountCheckBox;
+
+    @FXML
     private HBox listViewsBox;
 
     @FXML
@@ -166,6 +169,7 @@ public class MainController implements Initializable {
         settings.setSource(sourceFolderField.getText());
         settings.setResult(resultFolderField.getText());
         settings.setClearResultFolder(clearResultFolderCheckBox.isSelected());
+        settings.setCheckCount(checkCountCheckBox.isSelected());
         return settings;
     }
 
@@ -283,6 +287,7 @@ public class MainController implements Initializable {
             sourceFolderField.setText(settings.getSource());
             resultFolderField.setText(settings.getResult());
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
+            checkCountCheckBox.setSelected(settings.isCheckCount());
             loadListViews(new File(settings.getSpecification()), () -> {
                 listViewSelect(opListView, settings.getOp());
                 listViewSelect(templateListView, settings.getTemplate());

@@ -125,7 +125,12 @@
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <Button styleClass="primary" mnemonicParsing="false" onAction="#onStart" prefHeight="40.0" prefWidth="120.0" text="Старт">
+            <CheckBox fx:id="checkCountCheckBox" maxWidth="1200.0" mnemonicParsing="false" text="Учитывать количество">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <Button mnemonicParsing="false" onAction="#onStart" prefHeight="40.0" prefWidth="120.0" styleClass="primary" text="Старт">
                <font>
                   <Font size="16.0" />
                </font>

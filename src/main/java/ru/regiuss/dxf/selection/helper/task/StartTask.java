@@ -73,7 +73,18 @@ public class StartTask extends Task<TaskResult> {
 
                 if(filePath.toFile().exists()) {
                     log.debug("copy file {}", filePath);
-                    Files.copy(filePath, result.resolve(row.get(indexes[0]) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
+                    if(settings.isCheckCount()) {
+                        int count = 1;
+                        try {
+                            count = Integer.parseInt(row.get(indexes[4]));
+                        } catch (Exception e) {
+                            log.error("parse count error value:{}", row.get(indexes[4]), e);
+                        }
+                        for (int i = 0; i < count; i++) {
+                            Files.copy(filePath, result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d)", i+1, count) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
+                        }
+                    } else
+                        Files.copy(filePath, result.resolve(row.get(indexes[0]) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
                     copied++;
                 } else {
                     notFoundFiles.add(filePath.getFileName().toString());
