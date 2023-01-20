@@ -30,7 +30,17 @@ public class XLSReader implements Reader {
     @Override
     public Row next() {
         final Cell[] row = sheet.getRow(current++);
-        return i -> row[i].getContents();
+        return new Row() {
+            @Override
+            public String get(int i) {
+                return row[i].getContents();
+            }
+
+            @Override
+            public int size() {
+                return row.length;
+            }
+        };
     }
 
     @Override
