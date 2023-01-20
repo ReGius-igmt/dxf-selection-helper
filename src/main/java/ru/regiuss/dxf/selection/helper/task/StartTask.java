@@ -3,6 +3,7 @@ package ru.regiuss.dxf.selection.helper.task;
 import javafx.concurrent.Task;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import ru.regiuss.dxf.selection.helper.exception.ColumnIndexException;
 import ru.regiuss.dxf.selection.helper.model.Settings;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
@@ -14,6 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -37,20 +41,36 @@ public class StartTask extends Task<Void> {
             Path source = Paths.get(settings.getSource());
             Row row;
             int c = 0;
-            while (reader.hasNext() && !Thread.currentThread().isInterrupted()) {
+
+            int[] indexes = new int[] {-1, -1, -1, -1, -1};
+
+            if(reader.hasNext()) {
+                List<String> values = Arrays.asList("обозначение", "заготовка", "типоразмер", "оп1", "к-во");
+                row = reader.next();
+                for (int i = 0; i < row.size(); i++) {
+                    String v = row.get(i).toLowerCase(Locale.ROOT);
+                    int index = values.indexOf(v);
+                    if(index != -1) indexes[index] = i;
+                }
+                for (int i = 0; i < indexes.length; i++) {
+                    if(indexes[i] < 0) throw new ColumnIndexException(values.get(i));
+                }
+            } else return null;
+
+            while (reader.hasNext() && !isCancelled()) {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
                 log.debug("check =============");
                 if(
-                        check(settings.getTemplate(), row.get(3))
-                        || check(settings.getSize(), row.get(4))
-                        || check(settings.getOp(), row.get(5))
+                        check(settings.getTemplate(), row.get(indexes[1]))
+                        || check(settings.getSize(), row.get(indexes[2]))
+                        || check(settings.getOp(), row.get(indexes[3]))
                 ) continue;
-                Path filePath = source.resolve(row.get(1) + ".dxf");
+                Path filePath = source.resolve(row.get(indexes[0]) + ".dxf");
                 if(filePath.toFile().exists()) {
                     log.debug("copy file {}", filePath);
-                    Files.copy(filePath, result.resolve(row.get(1) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(filePath, result.resolve(row.get(indexes[0]) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
                 } else log.debug("file not exists {}", filePath);
             }
         }
