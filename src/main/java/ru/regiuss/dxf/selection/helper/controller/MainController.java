@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
@@ -26,6 +28,7 @@ import ru.regiuss.dxf.selection.helper.model.SpecificationData;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.node.SelectSpecification;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
+import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -79,17 +82,17 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
-        browseFolder(resultFolderField);
+        Utils.browseFolder(resultFolderField, ((Node)event.getTarget()).getScene().getWindow());
     }
 
     @FXML
     void onBrowseSourceFolder(ActionEvent event) {
-        browseFolder(sourceFolderField);
+        Utils.browseFolder(sourceFolderField, ((Node)event.getTarget()).getScene().getWindow());
     }
 
     @FXML
     void onBrowseSpecificationFile(ActionEvent event) {
-
+        Utils.browseFile(specificationFileField, ((Node)event.getTarget()).getScene().getWindow());
     }
 
     @FXML
@@ -250,18 +253,6 @@ public class MainController implements Initializable {
             indexes = data.getIndexes();
             loadListViews(new File(data.getPath()), null);
         }
-    }
-
-    private void browseFolder(TextField field) {
-        DirectoryChooser chooser = new DirectoryChooser();
-        if(!field.getText().isEmpty()) {
-            File initialDirectory = new File(field.getText());
-            if(initialDirectory.exists() && initialDirectory.isDirectory())
-                chooser.setInitialDirectory(initialDirectory);
-        }
-        File resultFolder = chooser.showDialog(app.getStage());
-        log.debug("browse folder - {}", resultFolder);
-        if(resultFolder != null) field.setText(resultFolder.getAbsolutePath());
     }
 
     private void saveSettings(Settings settings) {
