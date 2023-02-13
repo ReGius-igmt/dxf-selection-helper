@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
 import ru.regiuss.dxf.selection.helper.reader.Row;
-import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.io.File;
 import java.util.HashSet;
@@ -22,19 +21,13 @@ public class SpecificationStorage {
     private Set<String> size;
 
 
-    public void read() throws Exception {
+    public void read(int[] indexes) throws Exception {
         try(Reader reader = ReaderFactory.create(source)) {
             op = new HashSet<>(reader.length());
             template = new HashSet<>(reader.length());
             size = new HashSet<>(reader.length());
-            Row row;
-            int[] indexes;
-
-            if(reader.hasNext()) indexes = Utils.readIndexes(reader.next());
-            else return;
-
             while (reader.hasNext()) {
-                row = reader.next();
+                Row row = reader.next();
                 add(template, row.get(indexes[1]));
                 add(size, row.get(indexes[2]));
                 add(op, row.get(indexes[3]));

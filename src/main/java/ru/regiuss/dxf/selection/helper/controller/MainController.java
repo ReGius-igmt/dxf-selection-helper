@@ -1,6 +1,5 @@
 package ru.regiuss.dxf.selection.helper.controller;
 
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -8,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,14 +16,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.Settings;
+import ru.regiuss.dxf.selection.helper.model.SpecificationData;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
+import ru.regiuss.dxf.selection.helper.node.SelectSpecification;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 
 import java.io.*;
@@ -76,6 +75,7 @@ public class MainController implements Initializable {
     private ListView<String> templateListView;
     private App app;
     private StartTask startTask;
+    private int[] indexes;
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
@@ -89,16 +89,14 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseSpecificationFile(ActionEvent event) {
-        FileChooser chooser = new FileChooser();
-        if(!specificationFileField.getText().isEmpty()) {
-            File initialDirectory = new File(specificationFileField.getText());
-            if(initialDirectory.exists())
-                chooser.setInitialDirectory(initialDirectory.isFile() ? initialDirectory.getParentFile() : initialDirectory);
+        SpecificationData data = new SelectSpecification().open(
+                app.getStage(), indexes, specificationFileField.getText()
+        );
+        if(data != null) {
+            specificationFileField.setText(data.getPath());
+            indexes = data.getIndexes();
+            loadListViews(new File(data.getPath()), null);
         }
-        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("EXCEL", "*.xls"));
-        File specificationFile = chooser.showOpenDialog(app.getStage());
-        log.debug("select specification file - {}", specificationFile);
-        if(specificationFile != null) specificationFileField.setText(specificationFile.getAbsolutePath());
     }
 
     @FXML
@@ -140,7 +138,7 @@ public class MainController implements Initializable {
                 controller.init(result);
                 stage.setScene(new Scene(p));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+                stage.initOwner(app.getStage());
                 stage.showAndWait();
             } catch (Exception e) {
                 log.error("load success fxml", e);
@@ -170,6 +168,7 @@ public class MainController implements Initializable {
         settings.setResult(resultFolderField.getText());
         settings.setClearResultFolder(clearResultFolderCheckBox.isSelected());
         settings.setCheckCount(checkCountCheckBox.isSelected());
+        settings.setIndexes(indexes);
         return settings;
     }
 
@@ -214,16 +213,6 @@ public class MainController implements Initializable {
     public void init(App app) {
         this.app = app;
         loadSettings();
-        specificationFileField.textProperty().addListener(onSpecificationChange());
-    }
-
-    private ChangeListener<? super String> onSpecificationChange() {
-        return (observableValue, s, t1) -> {
-            if(t1 == null || t1.isEmpty()) return;
-            if(t1.indexOf('.', t1.length() - 5) < 0) return;
-            File f = new File(t1);
-            loadListViews(f, null);
-        };
     }
 
     private void loadListViews(File f, Runnable onSuccess) {
@@ -233,7 +222,7 @@ public class MainController implements Initializable {
         Task<Void> readTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                storage.read();
+                storage.read(indexes);
                 return null;
             }
         };
@@ -286,6 +275,7 @@ public class MainController implements Initializable {
             specificationFileField.setText(settings.getSpecification());
             sourceFolderField.setText(settings.getSource());
             resultFolderField.setText(settings.getResult());
+            indexes = settings.getIndexes();
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
             checkCountCheckBox.setSelected(settings.isCheckCount());
             loadListViews(new File(settings.getSpecification()), () -> {
