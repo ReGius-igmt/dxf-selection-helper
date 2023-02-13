@@ -247,6 +247,11 @@ public class MainController implements Initializable {
         app.getEs().execute(readTask);
     }
 
+    @FXML
+    void onSpecificationSettings(ActionEvent event) {
+        
+    }
+
     private void browseFolder(TextField field) {
         DirectoryChooser chooser = new DirectoryChooser();
         if(!field.getText().isEmpty()) {
