@@ -89,14 +89,7 @@ public class MainController implements Initializable {
 
     @FXML
     void onBrowseSpecificationFile(ActionEvent event) {
-        SpecificationData data = new SelectSpecification().open(
-                app.getStage(), indexes, specificationFileField.getText()
-        );
-        if(data != null) {
-            specificationFileField.setText(data.getPath());
-            indexes = data.getIndexes();
-            loadListViews(new File(data.getPath()), null);
-        }
+
     }
 
     @FXML
@@ -249,7 +242,14 @@ public class MainController implements Initializable {
 
     @FXML
     void onSpecificationSettings(ActionEvent event) {
-        
+        SpecificationData data = new SelectSpecification().open(
+                app.getStage(), indexes, specificationFileField.getText()
+        );
+        if(data != null) {
+            specificationFileField.setText(data.getPath());
+            indexes = data.getIndexes();
+            loadListViews(new File(data.getPath()), null);
+        }
     }
 
     private void browseFolder(TextField field) {
