@@ -55,7 +55,7 @@
                   </VBox>
                   <HBox spacing="5.0">
                      <children>
-                        <TextField fx:id="specificationFileField" editable="false" maxWidth="600.0" prefHeight="35.0" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="specificationFileField" maxWidth="600.0" prefHeight="35.0" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="14.0" />
                            </font>
