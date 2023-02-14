@@ -22,12 +22,12 @@
             <VBox fx:id="choiceBoxes" spacing="5.0" />
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onCancelClick" prefWidth="100.0" text="Отмена">
+                  <Button mnemonicParsing="false" onAction="#onConfirmClick" prefWidth="100.0" text="Ок">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onConfirmClick" prefWidth="100.0" text="Ок">
+                  <Button mnemonicParsing="false" onAction="#onCancelClick" prefWidth="100.0" text="Отмена">
                      <font>
                         <Font size="16.0" />
                      </font>

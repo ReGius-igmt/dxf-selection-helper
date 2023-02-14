@@ -17,9 +17,7 @@ import java.util.Set;
 @Log4j2
 public class SpecificationStorage {
     private final File source;
-    private Set<String> op;
-    private Set<String> template;
-    private Set<String> size;
+    private Set<String>[] values;
     private String[][] preview;
     private int[] indexes;
 
@@ -28,26 +26,23 @@ public class SpecificationStorage {
         preview = new String[10][];
         int previewIndex = 0;
         try(Reader reader = ReaderFactory.create(source)) {
-            op = new HashSet<>(reader.length());
-            template = new HashSet<>(reader.length());
-            size = new HashSet<>(reader.length());
-            if(indexes == null && reader.hasNext()) {
+            values = new HashSet[4];
+            for (int i = 0; i < 4; i++) {
+                values[i] = new HashSet<>(reader.length());
+            }
+            if(reader.hasNext()) {
                 Row row = reader.next();
                 preview[previewIndex++] = row.toArray();
-                indexes = Utils.readIndexes(row);
-            }
+                if(indexes == null) indexes = Utils.readIndexes(row);
+            } else return;
             this.indexes = indexes;
-            if(indexes == null) return;
             while (reader.hasNext()) {
                 Row row = reader.next();
                 if(previewIndex < 10) preview[previewIndex++] = row.toArray();
-                add(template, row.get(indexes[1]));
-                add(size, row.get(indexes[2]));
-                add(op, row.get(indexes[3]));
+                for (int i = 0; i < 4; i++) {
+                    add(values[i], row.get(indexes[2+i]));
+                }
             }
-            log.debug("SET TEMPLATE: {}", template);
-            log.debug("SET SIZE: {}", size);
-            log.debug("SET OP: {}", op);
         }
     }
 

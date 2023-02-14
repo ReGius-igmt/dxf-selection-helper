@@ -8,7 +8,6 @@ import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.reader.Reader;
 import ru.regiuss.dxf.selection.helper.reader.ReaderFactory;
 import ru.regiuss.dxf.selection.helper.reader.Row;
-import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +17,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @Log4j2
@@ -53,11 +51,7 @@ public class StartTask extends Task<TaskResult> {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));
                 updateProgress(c, reader.length());
                 row = reader.next();
-                if(
-                        check(settings.getTemplate(), row.get(indexes[1]))
-                        || check(settings.getSize(), row.get(indexes[2]))
-                        || check(settings.getOp(), row.get(indexes[3]))
-                ) continue;
+                if(check(row, indexes)) continue;
                 found++;
                 Path filePath = source.resolve(row.get(indexes[0]) + ".dxf");
 
@@ -66,9 +60,9 @@ public class StartTask extends Task<TaskResult> {
                     if(settings.isCheckCount()) {
                         int count = 1;
                         try {
-                            count = Integer.parseInt(row.get(indexes[4]));
+                            count = Integer.parseInt(row.get(indexes[1]));
                         } catch (Exception e) {
-                            log.error("parse count error value:{}", row.get(indexes[4]), e);
+                            log.error("parse count error value:{}", row.get(indexes[1]), e);
                         }
                         for (int i = 0; i < count; i++) {
                             Files.copy(filePath, result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d)", count, i+1) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
@@ -85,8 +79,13 @@ public class StartTask extends Task<TaskResult> {
         return new TaskResult(found, copied, notFoundFiles);
     }
 
-    private boolean check(Set<String> set, String value) {
-        return value == null || value.isEmpty() || !set.contains(value);
+    private boolean check(Row row, int[] indexes) {
+        for (int i = 0; i < settings.getValues().length; i++) {
+            String value = row.get(indexes[2+i]);
+            if(value == null || value.isEmpty() || !settings.getValues()[i].contains(value))
+                return true;
+        }
+        return false;
     }
 
     private void clearFolder(Path path) {

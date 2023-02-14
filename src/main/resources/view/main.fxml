@@ -81,40 +81,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox fx:id="listViewsBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1200.0">
-               <children>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label text="Оп1">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="opListView" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label text="Заготовка">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="templateListView" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label text="Типоразмер">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="sizeListView" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+            <HBox fx:id="listViewsBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1200.0"/>
             <VBox maxWidth="1200.0">
                <children>
                   <Label text="Папка Результат:">

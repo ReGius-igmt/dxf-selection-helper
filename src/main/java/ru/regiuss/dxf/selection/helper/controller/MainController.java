@@ -7,12 +7,16 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
@@ -47,16 +51,10 @@ public class MainController implements Initializable {
     private HBox listViewsBox;
 
     @FXML
-    private ListView<String> opListView;
-
-    @FXML
     private ProgressBar progressBar;
 
     @FXML
     private TextField resultFolderField;
-
-    @FXML
-    private ListView<String> sizeListView;
 
     @FXML
     private TextField sourceFolderField;
@@ -67,9 +65,8 @@ public class MainController implements Initializable {
     @FXML
     private Text statusText;
 
-    @FXML
-    private ListView<String> templateListView;
     private App app;
+    private ListView<String>[] listViews;
     private StartTask startTask;
     private int[] indexes;
     private String[][] preview;
@@ -137,9 +134,11 @@ public class MainController implements Initializable {
 
     private Settings getSettings() {
         Settings settings = new Settings();
-        settings.setOp(new HashSet<>(opListView.getSelectionModel().getSelectedItems()));
-        settings.setTemplate(new HashSet<>(templateListView.getSelectionModel().getSelectedItems()));
-        settings.setSize(new HashSet<>(sizeListView.getSelectionModel().getSelectedItems()));
+        HashSet<String>[] values = new HashSet[listViews.length];
+        for (int i = 0; i < listViews.length; i++) {
+            values[i] = new HashSet<>(listViews[i].getSelectionModel().getSelectedItems());
+        }
+        settings.setValues(values);
         settings.setSpecification(specificationFileField.getText());
         settings.setSource(sourceFolderField.getText());
         settings.setResult(resultFolderField.getText());
@@ -161,9 +160,21 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        opListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        templateListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        sizeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        String[] names = new String[] {"Оп1", "Заготовка", "Типоразмер", "Материал"};
+        listViews = new ListView[names.length];
+        for (int i = 0; i < names.length; i++) {
+            Label label = new Label(names[i]);
+            label.setFont(Font.font(14));
+            ListView<String> listView = new ListView<>();
+            listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            listViews[i] = listView;
+
+            VBox vBox = new VBox(label, listView);
+            vBox.setAlignment(Pos.CENTER);
+            HBox.setHgrow(vBox, Priority.ALWAYS);
+            listViewsBox.getChildren().add(vBox);
+        }
         specificationFileField.textProperty().addListener(onSpecificationChange());
         pane.setOnDragOver(event -> {
             if (event.getGestureSource() != pane
@@ -207,12 +218,10 @@ public class MainController implements Initializable {
         readTask.setOnSucceeded(event -> {
             indexes = storage.getIndexes();
             preview = storage.getPreview();
-            opListView.getSelectionModel().clearSelection();
-            opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
-            templateListView.getSelectionModel().clearSelection();
-            templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
-            sizeListView.getSelectionModel().clearSelection();
-            sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
+            for (int i = 0; i < listViews.length; i++) {
+                listViews[i].getSelectionModel().clearSelection();
+                listViews[i].setItems(FXCollections.observableList(new ArrayList<>(storage.getValues()[i])));
+            }
             listViewsBox.setDisable(false);
             if(onSuccess != null) onSuccess.run();
         });
@@ -248,9 +257,9 @@ public class MainController implements Initializable {
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
             checkCountCheckBox.setSelected(settings.isCheckCount());
             loadListViews(new File(settings.getSpecification()), () -> {
-                listViewSelect(opListView, settings.getOp());
-                listViewSelect(templateListView, settings.getTemplate());
-                listViewSelect(sizeListView, settings.getSize());
+                for (int i = 0; i < listViews.length; i++) {
+                    listViewSelect(listViews[i], settings.getValues()[i]);
+                }
             });
         } catch (Exception e) {
             log.error("load settings exception", e);
@@ -261,6 +270,7 @@ public class MainController implements Initializable {
         return (observableValue, s, t1) -> {
             if(t1 == null || t1.isEmpty()) return;
             if(t1.indexOf('.', t1.length() - 5) < 0) return;
+            indexes = null;
             loadListViews(new File(t1), null);
         };
     }

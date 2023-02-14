@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
+import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,6 @@ public class SettingIndexes {
 
     private ChoiceBox<String>[] boxes;
     private Stage stage;
-    private final List<String> columns = Arrays.asList("Обозначение", "Заготовка", "Типоразмер", "Оп1", "К-во");
     private int[] indexes;
 
     @FXML
@@ -77,6 +77,7 @@ public class SettingIndexes {
     }
 
     private void init(int[] indexes, String[][] previewData) {
+        List<String> columns = Utils.getColumns();
         generateBoxes(columns);
         fillBoxes(Arrays.asList(previewData[0]), indexes == null ? new int[columns.size()] : indexes);
         for (int i = 0; i < previewData[0].length; i++) {
@@ -107,7 +108,7 @@ public class SettingIndexes {
 
     private void fillBoxes(List<String> headers, int[] indexes) {
         ObservableList<String> value = FXCollections.observableList(headers);
-        for (int i = 0; i < columns.size(); i++) {
+        for (int i = 0; i < indexes.length; i++) {
             boxes[i].setItems(value);
             boxes[i].getSelectionModel().select(indexes[i]);
         }

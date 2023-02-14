@@ -1,32 +1,31 @@
 package ru.regiuss.dxf.selection.helper.util;
 
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.Window;
-import ru.regiuss.dxf.selection.helper.exception.ColumnIndexException;
 import ru.regiuss.dxf.selection.helper.reader.Row;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class Utils {
     public static int[] readIndexes(Row row) {
-        int[] indexes = new int[] {-1, -1, -1, -1, -1};
-        List<String> values = Arrays.asList("обозначение", "заготовка", "типоразмер", "оп1", "к-во");
+        List<String> values = getColumns().stream().map(String::toLowerCase).collect(Collectors.toList());
+        int[] indexes = new int[values.size()];
         for (int i = 0; i < row.size(); i++) {
             String v = row.get(i).toLowerCase(Locale.ROOT);
             int index = values.indexOf(v);
             if(index != -1) indexes[index] = i;
         }
-        for (int i = 0; i < indexes.length; i++) {
-            if(indexes[i] < 0) throw new ColumnIndexException(values.get(i));
-        }
         return indexes;
+    }
+
+    public static List<String> getColumns() {
+        return Arrays.asList("Обозначение", "К-во", "Заготовка", "Типоразмер", "Оп1", "Материал");
     }
 
     public static void browseFile(TextField field, Window window) {
