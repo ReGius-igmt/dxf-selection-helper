@@ -7,6 +7,7 @@ import jxl.read.biff.BiffException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class XLSReader implements Reader {
 
@@ -34,6 +35,11 @@ public class XLSReader implements Reader {
             @Override
             public String get(int i) {
                 return row[i].getContents();
+            }
+
+            @Override
+            public String[] toArray() {
+                return Arrays.stream(row).map(Cell::getContents).toArray(String[]::new);
             }
 
             @Override

@@ -6,30 +6,27 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
-import ru.regiuss.dxf.selection.helper.model.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.Settings;
+import ru.regiuss.dxf.selection.helper.model.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.node.SettingIndexes;
 import ru.regiuss.dxf.selection.helper.node.SuccessScreen;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 import ru.regiuss.dxf.selection.helper.util.Utils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -78,6 +75,7 @@ public class MainController implements Initializable {
     private App app;
     private StartTask startTask;
     private int[] indexes;
+    private String[][] preview;
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {
@@ -169,6 +167,7 @@ public class MainController implements Initializable {
         opListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         templateListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         sizeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        specificationFileField.textProperty().addListener(onSpecificationChange());
         pane.setOnDragOver(event -> {
             if (event.getGestureSource() != pane
                     && event.getDragboard().hasFiles()) {
@@ -197,7 +196,7 @@ public class MainController implements Initializable {
         loadSettings();
     }
 
-    private void loadListViews(File f, int[] indexes, Runnable onSuccess) {
+    private void loadListViews(File f, Runnable onSuccess) {
         if(!f.exists() && f.isDirectory()) return;
         listViewsBox.setDisable(true);
         SpecificationStorage storage = new SpecificationStorage(f);
@@ -209,6 +208,8 @@ public class MainController implements Initializable {
             }
         };
         readTask.setOnSucceeded(event -> {
+            indexes = storage.getIndexes();
+            preview = storage.getPreview();
             opListView.getSelectionModel().clearSelection();
             opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
             templateListView.getSelectionModel().clearSelection();
@@ -231,10 +232,10 @@ public class MainController implements Initializable {
 
     @FXML
     void onSpecificationSettings(ActionEvent event) {
-        int[] data = new SettingIndexes().open(app.getStage(), indexes, specificationFileField.getText());
+        int[] data = new SettingIndexes().open(app.getStage(), indexes, preview);
         if(data != null) {
             indexes = data;
-            loadListViews(new File(specificationFileField.getText()), data,null);
+            loadListViews(new File(specificationFileField.getText()), null);
         }
     }
 
@@ -249,7 +250,7 @@ public class MainController implements Initializable {
             indexes = settings.getIndexes();
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
             checkCountCheckBox.setSelected(settings.isCheckCount());
-            loadListViews(new File(settings.getSpecification()), indexes, () -> {
+            loadListViews(new File(settings.getSpecification()), () -> {
                 listViewSelect(opListView, settings.getOp());
                 listViewSelect(templateListView, settings.getTemplate());
                 listViewSelect(sizeListView, settings.getSize());
@@ -263,7 +264,7 @@ public class MainController implements Initializable {
         return (observableValue, s, t1) -> {
             if(t1 == null || t1.isEmpty()) return;
             if(t1.indexOf('.', t1.length() - 5) < 0) return;
-            loadListViews(new File(t1), indexes, null);
+            loadListViews(new File(t1), null);
         };
     }
 
