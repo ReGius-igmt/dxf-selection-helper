@@ -29,10 +29,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 @Log4j2
 public class MainController implements Initializable {
@@ -233,7 +230,7 @@ public class MainController implements Initializable {
     @FXML
     void onSpecificationSettings(ActionEvent event) {
         int[] data = new SettingIndexes().open(app.getStage(), indexes, preview);
-        if(data != null) {
+        if(data != null && !Arrays.equals(data, indexes)) {
             indexes = data;
             loadListViews(new File(specificationFileField.getText()), null);
         }

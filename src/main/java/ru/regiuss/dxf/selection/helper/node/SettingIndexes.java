@@ -1,5 +1,6 @@
 package ru.regiuss.dxf.selection.helper.node;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Log4j2
 public class SettingIndexes {
@@ -75,15 +77,16 @@ public class SettingIndexes {
     }
 
     private void init(int[] indexes, String[][] previewData) {
-        log.info(Arrays.toString(indexes));
-        if(indexes == null) this.indexes = new int[columns.size()];
-        else this.indexes = indexes;
         generateBoxes(columns);
-        fillBoxes(Arrays.asList(previewData[0]), indexes);
-        for(String h : previewData[0]) {
-            preview.getColumns().add(new TableColumn<>(h));
+        fillBoxes(Arrays.asList(previewData[0]), indexes == null ? new int[columns.size()] : indexes);
+        for (int i = 0; i < previewData[0].length; i++) {
+            TableColumn<String[], String> column = new TableColumn<>(previewData[0][i]);
+            final int colIndex = i ;
+            column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()[colIndex]));
+            column.setResizable(true);
+            preview.getColumns().add(column);
         }
-        preview.setItems(FXCollections.observableList(Arrays.asList(previewData)));
+        preview.setItems(FXCollections.observableList(Arrays.stream(previewData).skip(1).collect(Collectors.toList())));
     }
 
     private void generateBoxes(List<String> columns) {
