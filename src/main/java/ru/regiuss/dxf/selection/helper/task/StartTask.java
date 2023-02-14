@@ -47,10 +47,7 @@ public class StartTask extends Task<TaskResult> {
             Row row;
             int c = 0;
 
-            int[] indexes;
-            if(reader.hasNext()) {
-                indexes = Utils.readIndexes(reader.next());
-            } else return new TaskResult();
+            int[] indexes = settings.getIndexes();
 
             while (reader.hasNext() && !isCancelled()) {
                 updateMessage(String.format("Прогресс (%s/%s)", ++c, reader.length()));

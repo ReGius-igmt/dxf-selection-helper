@@ -1,5 +1,6 @@
 package ru.regiuss.dxf.selection.helper.controller;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -16,15 +17,12 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
 import ru.regiuss.dxf.selection.helper.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.Settings;
-import ru.regiuss.dxf.selection.helper.model.SpecificationData;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.node.SelectSpecification;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
@@ -211,7 +209,7 @@ public class MainController implements Initializable {
         loadSettings();
     }
 
-    private void loadListViews(File f, Runnable onSuccess) {
+    private void loadListViews(File f, int[] indexes, Runnable onSuccess) {
         if(!f.exists() && f.isDirectory()) return;
         listViewsBox.setDisable(true);
         SpecificationStorage storage = new SpecificationStorage(f);
@@ -223,12 +221,12 @@ public class MainController implements Initializable {
             }
         };
         readTask.setOnSucceeded(event -> {
-            opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
             opListView.getSelectionModel().clearSelection();
-            templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
+            opListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getOp())));
             templateListView.getSelectionModel().clearSelection();
-            sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
+            templateListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getTemplate())));
             sizeListView.getSelectionModel().clearSelection();
+            sizeListView.setItems(FXCollections.observableList(new ArrayList<>(storage.getSize())));
             listViewsBox.setDisable(false);
             if(onSuccess != null) onSuccess.run();
         });
@@ -245,13 +243,10 @@ public class MainController implements Initializable {
 
     @FXML
     void onSpecificationSettings(ActionEvent event) {
-        SpecificationData data = new SelectSpecification().open(
-                app.getStage(), indexes, specificationFileField.getText()
-        );
+        int[] data = new SelectSpecification().open(app.getStage(), indexes, specificationFileField.getText());
         if(data != null) {
-            specificationFileField.setText(data.getPath());
-            indexes = data.getIndexes();
-            loadListViews(new File(data.getPath()), null);
+            indexes = data;
+            loadListViews(new File(specificationFileField.getText()), data,null);
         }
     }
 
@@ -274,7 +269,7 @@ public class MainController implements Initializable {
             indexes = settings.getIndexes();
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
             checkCountCheckBox.setSelected(settings.isCheckCount());
-            loadListViews(new File(settings.getSpecification()), () -> {
+            loadListViews(new File(settings.getSpecification()), indexes, () -> {
                 listViewSelect(opListView, settings.getOp());
                 listViewSelect(templateListView, settings.getTemplate());
                 listViewSelect(sizeListView, settings.getSize());
@@ -282,6 +277,14 @@ public class MainController implements Initializable {
         } catch (Exception e) {
             log.error("load settings exception", e);
         }
+    }
+
+    private ChangeListener<? super String> onSpecificationChange() {
+        return (observableValue, s, t1) -> {
+            if(t1 == null || t1.isEmpty()) return;
+            if(t1.indexOf('.', t1.length() - 5) < 0) return;
+            loadListViews(new File(t1), indexes, null);
+        };
     }
 
     private <T> void listViewSelect(ListView<T> list, Set<T> values) {
