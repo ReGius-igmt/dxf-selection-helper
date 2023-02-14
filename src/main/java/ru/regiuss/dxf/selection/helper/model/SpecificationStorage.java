@@ -1,4 +1,4 @@
-package ru.regiuss.dxf.selection.helper;
+package ru.regiuss.dxf.selection.helper.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +19,8 @@ public class SpecificationStorage {
     private Set<String> op;
     private Set<String> template;
     private Set<String> size;
+    private String[][] preview;
+    private int[] indexes;
 
 
     public void read(int[] indexes) throws Exception {

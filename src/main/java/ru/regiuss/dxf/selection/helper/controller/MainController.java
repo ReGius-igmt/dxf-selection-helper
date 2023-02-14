@@ -21,10 +21,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 import ru.regiuss.dxf.selection.helper.App;
-import ru.regiuss.dxf.selection.helper.SpecificationStorage;
+import ru.regiuss.dxf.selection.helper.model.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.Settings;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
-import ru.regiuss.dxf.selection.helper.node.SelectSpecification;
+import ru.regiuss.dxf.selection.helper.node.SettingIndexes;
+import ru.regiuss.dxf.selection.helper.node.SuccessScreen;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 import ru.regiuss.dxf.selection.helper.util.Utils;
 
@@ -118,25 +119,12 @@ public class MainController implements Initializable {
         target.getStyleClass().add("danger");
 
         Settings settings = getSettings();
-        saveSettings(settings);
+        settings.save("cache");
 
         startTask = new StartTask(settings);
         startTask.setOnSucceeded(workerStateEvent -> {
             TaskResult result = startTask.getValue();
-            Stage stage = new Stage();
-            stage.setTitle("Success");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/success.fxml"));
-            try {
-                Parent p = loader.load();
-                SuccessController controller = loader.getController();
-                controller.init(result);
-                stage.setScene(new Scene(p));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(app.getStage());
-                stage.showAndWait();
-            } catch (Exception e) {
-                log.error("load success fxml", e);
-            }
+            new SuccessScreen().open(app.getStage(), result);
             statusClear(target);
         });
         startTask.setOnFailed(workerStateEvent -> {
@@ -243,18 +231,10 @@ public class MainController implements Initializable {
 
     @FXML
     void onSpecificationSettings(ActionEvent event) {
-        int[] data = new SelectSpecification().open(app.getStage(), indexes, specificationFileField.getText());
+        int[] data = new SettingIndexes().open(app.getStage(), indexes, specificationFileField.getText());
         if(data != null) {
             indexes = data;
             loadListViews(new File(specificationFileField.getText()), data,null);
-        }
-    }
-
-    private void saveSettings(Settings settings) {
-        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("cache"))) {
-            os.writeObject(settings);
-        } catch (Exception e) {
-            log.error("save settings exception", e);
         }
     }
 

@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Log4j2
-public class SelectSpecification {
+public class SettingIndexes {
 
     @FXML
     private VBox choiceBoxes;
@@ -62,13 +62,13 @@ public class SelectSpecification {
 
     public Parent open(int[] indexes, String[][] previewData) {
         Parent p;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/selectSpecification.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/settingIndexes.fxml"));
         loader.setController(this);
         try {
             p = loader.load();
             init(indexes, previewData);
         } catch (Exception e) {
-            log.error("FXMLLoader selectSpecification.fxml", e);
+            log.error("FXMLLoader settingIndexes.fxml", e);
             return null;
         }
         return p;
