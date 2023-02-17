@@ -161,10 +161,10 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String[] names = new String[] {"Оп1", "Заготовка", "Типоразмер", "Материал"};
-        listViews = new ListView[names.length];
-        for (int i = 0; i < names.length; i++) {
-            Label label = new Label(names[i]);
+        List<String> names = Utils.getColumns();
+        listViews = new ListView[names.size()-2];
+        for (int i = 0; i < names.size()-2; i++) {
+            Label label = new Label(names.get(i+2));
             label.setFont(Font.font(14));
             ListView<String> listView = new ListView<>();
             listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -238,6 +238,7 @@ public class MainController implements Initializable {
 
     @FXML
     void onSpecificationSettings(ActionEvent event) {
+        if(specificationFileField.getText().isEmpty()) return;
         int[] data = new SettingIndexes().open(app.getStage(), indexes, preview);
         if(data != null && !Arrays.equals(data, indexes)) {
             indexes = data;
