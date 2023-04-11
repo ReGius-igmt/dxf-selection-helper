@@ -49,7 +49,7 @@ public class SettingIndexes {
         stage.close();
     }
 
-    public int[] open(Stage owner, int[] indexes, String[][] previewData) {
+    public int[] open(Stage owner, int[] indexes, List<String[]> previewData) {
         if(stage != null) stage.close();
         stage = new Stage();
         stage.setTitle("Файл спецификации");
@@ -62,7 +62,7 @@ public class SettingIndexes {
         return this.indexes;
     }
 
-    public Parent open(int[] indexes, String[][] previewData) {
+    public Parent open(int[] indexes, List<String[]> previewData) {
         Parent p;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/settingIndexes.fxml"));
         loader.setController(this);
@@ -76,18 +76,18 @@ public class SettingIndexes {
         return p;
     }
 
-    private void init(int[] indexes, String[][] previewData) {
+    private void init(int[] indexes, List<String[]> previewData) {
         List<String> columns = Utils.getColumns();
         generateBoxes(columns);
-        fillBoxes(Arrays.asList(previewData[0]), indexes == null ? new int[columns.size()] : indexes);
-        for (int i = 0; i < previewData[0].length; i++) {
-            TableColumn<String[], String> column = new TableColumn<>(previewData[0][i]);
+        fillBoxes(Arrays.asList(previewData.get(0)), indexes == null ? new int[columns.size()] : indexes);
+        for (int i = 0; i < previewData.get(0).length; i++) {
+            TableColumn<String[], String> column = new TableColumn<>(previewData.get(0)[i]);
             final int colIndex = i ;
             column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()[colIndex]));
             column.setResizable(true);
             preview.getColumns().add(column);
         }
-        preview.setItems(FXCollections.observableList(Arrays.stream(previewData).skip(1).collect(Collectors.toList())));
+        preview.setItems(FXCollections.observableList(previewData.stream().skip(1).collect(Collectors.toList())));
     }
 
     private void generateBoxes(List<String> columns) {

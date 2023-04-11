@@ -69,7 +69,7 @@ public class MainController implements Initializable {
     private ListView<String>[] listViews;
     private StartTask startTask;
     private int[] indexes;
-    private String[][] preview;
+    private List<String[]> preview;
 
     @FXML
     void onBrowseResultFolder(ActionEvent event) {

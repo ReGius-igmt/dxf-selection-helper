@@ -10,6 +10,8 @@ import ru.regiuss.dxf.selection.helper.util.Utils;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -18,13 +20,12 @@ import java.util.Set;
 public class SpecificationStorage {
     private final File source;
     private Set<String>[] values;
-    private String[][] preview;
+    private List<String[]> preview;
     private int[] indexes;
 
 
     public void read(int[] indexes) throws Exception {
-        preview = new String[10][];
-        int previewIndex = 0;
+        preview = new LinkedList<>();
         try(Reader reader = ReaderFactory.create(source)) {
             values = new HashSet[4];
             for (int i = 0; i < 4; i++) {
@@ -32,13 +33,13 @@ public class SpecificationStorage {
             }
             if(reader.hasNext()) {
                 Row row = reader.next();
-                preview[previewIndex++] = row.toArray();
+                preview.add(row.toArray());
                 if(indexes == null) indexes = Utils.readIndexes(row);
             } else return;
             this.indexes = indexes;
             while (reader.hasNext()) {
                 Row row = reader.next();
-                if(previewIndex < 10) preview[previewIndex++] = row.toArray();
+                if(preview.size() < 100) preview.add(row.toArray());
                 for (int i = 0; i < 4; i++) {
                     add(values[i], row.get(indexes[2+i]));
                 }
