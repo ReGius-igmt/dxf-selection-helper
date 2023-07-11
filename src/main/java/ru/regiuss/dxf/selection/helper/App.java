@@ -30,7 +30,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.es = Executors.newSingleThreadExecutor(r -> {
+        this.es = Executors.newFixedThreadPool(2, r -> {
             Thread t = Executors.defaultThreadFactory().newThread(r);
             t.setDaemon(true);
             t.setName("DXFSelectionHelperThread");
@@ -45,7 +45,7 @@ public class App extends Application {
         log.info("check updates: {}", checkUpdate);
 
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
-        stage.setTitle("DXFSelectionHelper");
+        stage.setTitle("DXFSelectionHelper v" + version);
         stage.setMinWidth(WIDTH);
         stage.setMinHeight(HEIGHT);
 
@@ -83,6 +83,7 @@ public class App extends Application {
             userPrefs.putDouble("stage.position.height", stage.getHeight());
         }
         userPrefs.putBoolean("stage.position.isMaximized", isMaximized);
+        es.shutdown();
     }
 
 }

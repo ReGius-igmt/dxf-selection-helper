@@ -21,6 +21,7 @@ public class Settings implements Serializable {
     private HashSet<String>[] values;
     private boolean clearResultFolder;
     private boolean checkCount;
+    private int countMultiply;
 
     public void save(String path) {
         try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path))) {

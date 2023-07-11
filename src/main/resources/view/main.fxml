@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.regiuss.dxf.selection.helper.controller.MainController">
+<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.regiuss.dxf.selection.helper.controller.MainController">
    <children>
       <VBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <children>
@@ -81,7 +80,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox fx:id="listViewsBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1200.0"/>
+            <HBox fx:id="listViewsBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1200.0" />
             <VBox maxWidth="1200.0">
                <children>
                   <Label text="Папка Результат:">
@@ -110,11 +109,29 @@
                   <Font size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="checkCountCheckBox" maxWidth="1200.0" mnemonicParsing="false" text="Учитывать количество">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <CheckBox fx:id="checkCountCheckBox" maxWidth="1200.0" mnemonicParsing="false" text="Учитывать количество" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <Label text="Умножить количество на:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="countMultiplyField" maxWidth="100.0" prefHeight="35.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
             <Button mnemonicParsing="false" onAction="#onStart" prefHeight="40.0" prefWidth="120.0" styleClass="primary" text="Старт">
                <font>
                   <Font size="16.0" />
@@ -126,11 +143,20 @@
          <children>
             <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" text="Статус">
                <VBox.margin>
-                  <Insets left="5.0" />
+                  <Insets />
                </VBox.margin>
             </Text>
             <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="10.0" progress="0.0" />
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Text fx:id="nameText" fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Label fx:id="updateStatusText" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Проверка наличия обновлений..." textFill="#909090" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </AnchorPane>

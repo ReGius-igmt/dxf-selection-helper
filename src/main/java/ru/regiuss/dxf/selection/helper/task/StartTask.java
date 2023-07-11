@@ -63,12 +63,22 @@ public class StartTask extends Task<TaskResult> {
                     } catch (Exception e) {
                         log.error("parse count error value:{}", row.get(indexes[1]), e);
                     }
+                    count *= settings.getCountMultiply();
                     if(settings.isCheckCount()) {
                         for (int i = 0; i < count; i++) {
-                            Files.copy(filePath, result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d)", count, i+1) + ".dxf"), StandardCopyOption.REPLACE_EXISTING);
+                            Path targetPath = result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d)", count, i + 1) + ".dxf");
+                            for (int j = 1; targetPath.toFile().exists(); j++) {
+                                targetPath = result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d) (%s)", count, i + 1, j) + ".dxf");
+                            }
+                            Files.copy(filePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
                         }
-                    } else
-                        Files.copy(filePath, result.resolve(row.get(indexes[0]) + "(" + count + ").dxf"), StandardCopyOption.REPLACE_EXISTING);
+                    } else {
+                        Path targetPath = result.resolve(row.get(indexes[0]) + "(" + count + ").dxf");
+                        for (int j = 1; targetPath.toFile().exists(); j++) {
+                            targetPath = result.resolve(row.get(indexes[0]) + "(" + count + ") (" + j + ").dxf");
+                        }
+                        Files.copy(filePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                    }
                     copied++;
                 } else {
                     notFoundFiles.add(filePath.getFileName().toString());

@@ -25,6 +25,7 @@ import ru.regiuss.dxf.selection.helper.model.SpecificationStorage;
 import ru.regiuss.dxf.selection.helper.model.TaskResult;
 import ru.regiuss.dxf.selection.helper.node.SettingIndexes;
 import ru.regiuss.dxf.selection.helper.node.SuccessScreen;
+import ru.regiuss.dxf.selection.helper.task.CheckUpdateTask;
 import ru.regiuss.dxf.selection.helper.task.StartTask;
 import ru.regiuss.dxf.selection.helper.util.Utils;
 
@@ -57,6 +58,9 @@ public class MainController implements Initializable {
     private TextField resultFolderField;
 
     @FXML
+    private TextField countMultiplyField;
+
+    @FXML
     private TextField sourceFolderField;
 
     @FXML
@@ -64,6 +68,12 @@ public class MainController implements Initializable {
 
     @FXML
     private Text statusText;
+
+    @FXML
+    private Text nameText;
+
+    @FXML
+    private Label updateStatusText;
 
     private App app;
     private ListView<String>[] listViews;
@@ -145,6 +155,12 @@ public class MainController implements Initializable {
         settings.setClearResultFolder(clearResultFolderCheckBox.isSelected());
         settings.setCheckCount(checkCountCheckBox.isSelected());
         settings.setIndexes(indexes);
+        int countMultiply = 1;
+        try {
+            countMultiply = Integer.parseInt(countMultiplyField.getText());
+        } catch (Exception ignored) {};
+        if(countMultiply < 1) countMultiply = 1;
+        settings.setCountMultiply(countMultiply);
         return settings;
     }
 
@@ -160,7 +176,6 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         List<String> names = Utils.getColumns();
         listViews = new ListView[names.size()-2];
         for (int i = 0; i < names.size()-2; i++) {
@@ -201,6 +216,24 @@ public class MainController implements Initializable {
 
     public void init(App app) {
         this.app = app;
+        CheckUpdateTask updateTask = new CheckUpdateTask(app.getVersion());
+        updateTask.setOnSucceeded(e -> {
+            String downloadLink = updateTask.getValue();
+            if(downloadLink != null) {
+                updateStatusText.setText("Доступна новая версия!");
+                updateStatusText.getStyleClass().add("hyperlink");
+                updateStatusText.setStyle("-fx-text-fill: blue");
+                updateStatusText.setOnMouseClicked(mouseEvent -> {
+                    app.getHostServices().showDocument(downloadLink);
+                });
+            } else
+                updateStatusText.setText("Вы используете последнюю версию");
+        });
+        updateTask.setOnFailed(e -> {
+            updateStatusText.setText("Не удалось проверить наличие обновлений");
+        });
+        app.getEs().execute(updateTask);
+        nameText.setText("DXFSelectionHelper v" + app.getVersion() + " by regiuss");
         loadSettings();
     }
 
@@ -257,6 +290,7 @@ public class MainController implements Initializable {
             indexes = settings.getIndexes();
             clearResultFolderCheckBox.setSelected(settings.isClearResultFolder());
             checkCountCheckBox.setSelected(settings.isCheckCount());
+            countMultiplyField.setText(Integer.toString(Math.max(settings.getCountMultiply(), 1)));
             loadListViews(new File(settings.getSpecification()), () -> {
                 for (int i = 0; i < listViews.length; i++) {
                     listViewSelect(listViews[i], settings.getValues()[i]);
