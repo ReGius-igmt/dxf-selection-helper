@@ -15,8 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @AllArgsConstructor
 @Log4j2
@@ -30,7 +31,29 @@ public class StartTask extends Task<TaskResult> {
         updateProgress(0, 1);
 
         Path result = Paths.get(settings.getResult());
-        if(settings.isClearResultFolder()) clearFolder(result);
+        Map<String, List<String>> codeFiles;
+        if(settings.isClearResultFolder()) {
+            clearFolder(result);
+            codeFiles = Collections.emptyMap();
+        } else {
+            codeFiles = new HashMap<>();
+            String[] listFiles = result.toFile().list();
+            if(listFiles != null) {
+                Pattern pattern = settings.isCheckCount()
+                        ? Pattern.compile("\\(\\d+\\.\\d+\\)")
+                        : Pattern.compile("\\(\\d+\\)");
+                for(String fileName : listFiles) {
+                    if(!fileName.endsWith(".dxf")) continue;
+                    int endIndex = fileName.indexOf(' ');
+                    if(endIndex < 0)
+                        endIndex = fileName.indexOf('(');
+                    if(endIndex < 0 || !pattern.matcher(fileName).find())
+                        continue;
+                    String code = fileName.substring(0, endIndex);
+                    codeFiles.computeIfAbsent(code, s -> new LinkedList<>()).add(fileName);
+                }
+            }
+        }
 
         File specification = new File(settings.getSpecification());
         if(!specification.exists()) throw new FileNotFoundException("файл " + specification + " не существует");
@@ -64,19 +87,22 @@ public class StartTask extends Task<TaskResult> {
                         log.error("parse count error value:{}", row.get(indexes[1]), e);
                     }
                     count *= settings.getCountMultiply();
+                    if(codeFiles.containsKey(row.get(indexes[0]))) {
+                        for(String filename : codeFiles.get(row.get(indexes[0]))) {
+                            result.resolve(filename).toFile().delete();
+                            if(settings.isCheckCount() && !filename.endsWith("001).dxf"))
+                                continue;
+                            int codeCount = getCountFromFilename(filename);
+                            count += codeCount ;
+                        }
+                    }
                     if(settings.isCheckCount()) {
                         for (int i = 0; i < count; i++) {
                             Path targetPath = result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d)", count, i + 1) + ".dxf");
-                            for (int j = 1; targetPath.toFile().exists(); j++) {
-                                targetPath = result.resolve(row.get(indexes[0]) + String.format(" (%03d.%03d) (%s)", count, i + 1, j) + ".dxf");
-                            }
                             Files.copy(filePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
                         }
                     } else {
                         Path targetPath = result.resolve(row.get(indexes[0]) + "(" + count + ").dxf");
-                        for (int j = 1; targetPath.toFile().exists(); j++) {
-                            targetPath = result.resolve(row.get(indexes[0]) + "(" + count + ") (" + j + ").dxf");
-                        }
                         Files.copy(filePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
                     }
                     copied++;
@@ -87,6 +113,12 @@ public class StartTask extends Task<TaskResult> {
             }
         }
         return new TaskResult(found, copied, notFoundFiles);
+    }
+
+    private int getCountFromFilename(String filename) {
+        Matcher m = Pattern.compile("\\(\\d+[).]").matcher(filename);
+        if(!m.find()) return 0;
+        return Integer.parseInt(m.group().replaceAll("\\D", ""));
     }
 
     private boolean check(Row row, int[] indexes) {

@@ -190,7 +190,6 @@ public class MainController implements Initializable {
             HBox.setHgrow(vBox, Priority.ALWAYS);
             listViewsBox.getChildren().add(vBox);
         }
-        specificationFileField.textProperty().addListener(onSpecificationChange());
         pane.setOnDragOver(event -> {
             if (event.getGestureSource() != pane
                     && event.getDragboard().hasFiles()) {
@@ -216,25 +215,28 @@ public class MainController implements Initializable {
 
     public void init(App app) {
         this.app = app;
-        CheckUpdateTask updateTask = new CheckUpdateTask(app.getVersion());
-        updateTask.setOnSucceeded(e -> {
-            String downloadLink = updateTask.getValue();
-            if(downloadLink != null) {
-                updateStatusText.setText("Доступна новая версия!");
-                updateStatusText.getStyleClass().add("hyperlink");
-                updateStatusText.setStyle("-fx-text-fill: blue");
-                updateStatusText.setOnMouseClicked(mouseEvent -> {
-                    app.getHostServices().showDocument(downloadLink);
-                });
-            } else
-                updateStatusText.setText("Вы используете последнюю версию");
-        });
-        updateTask.setOnFailed(e -> {
-            updateStatusText.setText("Не удалось проверить наличие обновлений");
-        });
-        app.getEs().execute(updateTask);
+        if(app.isCheckUpdate()) {
+            CheckUpdateTask updateTask = new CheckUpdateTask(app.getVersion());
+            updateTask.setOnSucceeded(e -> {
+                String downloadLink = updateTask.getValue();
+                if(downloadLink != null) {
+                    updateStatusText.setText("Доступна новая версия!");
+                    updateStatusText.getStyleClass().add("hyperlink");
+                    updateStatusText.setStyle("-fx-text-fill: blue");
+                    updateStatusText.setOnMouseClicked(mouseEvent -> {
+                        app.getHostServices().showDocument(downloadLink);
+                    });
+                } else
+                    updateStatusText.setText("Вы используете последнюю версию");
+            });
+            updateTask.setOnFailed(e -> {
+                updateStatusText.setText("Не удалось проверить наличие обновлений");
+            });
+            app.getEs().execute(updateTask);
+        }
         nameText.setText("DXFSelectionHelper v" + app.getVersion() + " by regiuss");
         loadSettings();
+        specificationFileField.textProperty().addListener(onSpecificationChange());
     }
 
     private void loadListViews(File f, Runnable onSuccess) {
